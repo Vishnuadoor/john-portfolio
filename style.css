@@ -1,0 +1,909 @@
+/* ========= Base Reset and Variables ========= */
+:root {
+  --primary: #ffffff;
+  --secondary: #1e1e1e;
+  --accent: #ff007f;
+  --bg-dark: #121212;
+  --bg-card: #1f1f1f;
+  --text-light: #f1f1f1;
+  --text-muted: #999;
+  --border-radius: 12px;
+  --transition-speed: 0.3s;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  scroll-behavior: smooth;
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevents horizontal scroll from oversized elements */
+}
+
+/* ========= Scrollbar ========= */
+::-webkit-scrollbar {
+  width: 0; /* Hides scrollbar for a cleaner look */
+  background: transparent;
+}
+
+/* ========= Header / Navbar ========= */
+.head-1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.custom-navbar {
+  padding: 0.7rem 1.5rem;
+  position: fixed; /* Ensures navbar stays at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001; /* Higher z-index for navbar */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 1em;
+  padding-bottom: 2em; /* Adjusted padding */
+}
+
+#gd_logo {
+  width: 42px;
+  height: 42px;
+  margin-right: 18px;
+}
+
+#name {
+  margin-top: 8px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--text-light);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  transition: all 0.5s ease-in-out;
+  display: flex; /* Align logo and text */
+  align-items: center;
+}
+
+#name:hover {
+  background: linear-gradient(190deg, #ffffff, #04040477);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
+}
+
+.custom-toggler {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.7%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Main Section Adjustments */
+/* Main Section */
+.Main {
+  padding-top: 8rem; /* Adjust this based on your fixed header's height */
+  padding-bottom: 5rem;
+  background-color: var(--bg-dark); /* Ensure consistent background */
+  display: flex; /* Use flex for centering content */
+  align-items: center; /* Vertically center content */
+  min-height: 100vh; /* Make section at least viewport height */
+  overflow: hidden; /* Prevent content overflow */
+}
+
+.main-2 {
+  margin-top: 0; /* Reset margin-top as padding-top is used on Main */
+  padding-top: 2em;
+  padding-left: 2em;
+}
+
+/* Main Photo (#ph) */
+#ph {
+  width: 25em;
+  height: 25em;
+  display: block;
+  margin: 0 auto; /* Center the image */
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 10px rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+#ph:hover {
+  width: 27em;
+  height: 27em;
+  box-shadow: 0 15px 160px rgba(255, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+/* Post Text */
+.post {
+  text-align: center;
+  font-size: 1.5rem; /* Adjusted for smaller screens (original value) */
+}
+
+/* Quote Block */
+.quote-1 {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 9px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  transition: all 0.4s ease-in-out;
+  text-align: center;
+}
+
+.quote-1:hover {
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.488);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1rem;
+  transform: scale(1.02); /* Slight scale on hover */
+  filter: brightness(110%);
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 1200px) { /* Large Desktops / Laptops */
+  .Main {
+    padding-top: 7rem;
+    padding-bottom: 4rem;
+  }
+  #ph {
+    width: 28em;
+    height: 28em;
+  }
+  #ph:hover {
+    width: 24em;
+    height: 24em;
+  }
+  .main-2 {
+    padding-top: 1.8em;
+    padding-left: 1.8em;
+  }
+  .quote-1 {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 992px) { /* Tablets and smaller laptops */
+  .Main {
+    padding-top: 6rem;
+    padding-bottom: 3.5rem;
+    min-height: auto; /* Allow content to dictate height more freely */
+  }
+  .main-2 {
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+  }
+  #ph {
+    width: 30em;
+    height: 30em;
+    margin-bottom: 1.5rem; /* Add space when stacking on smaller screens */
+  }
+  #ph:hover {
+    width: 20em;
+    height: 20em;
+  }
+  .quote-1 {
+    padding: 18px;
+    margin: 25px auto;
+    max-width: 90%; /* Allow it to take more width on smaller screens */
+  }
+}
+
+@media (max-width: 768px) { /* Mobile landscape and smaller tablets */
+  .Main {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+  .main-2 {
+    padding-top: 1.2em;
+    padding-left: 1.2em;
+  }
+  #ph {
+    width: 14em;
+    height: 14em;
+  }
+  #ph:hover {
+    width: 15.5em;
+    height: 15.5em;
+  }
+  .post {
+    font-size: 1.3rem; /* Adjusted for readability on smaller screens */
+  }
+  .quote-1 {
+    padding: 15px;
+    margin: 20px auto;
+    font-size: 1rem; /* Smaller font for mobile */
+  }
+}
+
+@media (max-width: 576px) { /* Small mobile (phones) */
+  .Main {
+    padding-top: 4rem;
+    padding-bottom: 2.5rem;
+  }
+  .main-2 {
+    padding-top: 1em;
+    padding-left: 1em;
+  }
+  #ph {
+    width: 90%; /* Use percentage for fluid sizing on very small screens */
+    /* Maintain aspect ratio */
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 8px rgba(255, 255, 255, 0.2); /* Slightly toned down for small screens */
+  }
+  #ph:hover {
+    width: 90%;
+    
+    box-shadow: 0 12px 120px rgba(255, 255, 255, 0.4); /* Scaled for smaller screen */
+  }
+  .post {
+    font-size: 1.1rem; /* Further adjustment for very small screens */
+  }
+  .quote-1 {
+    padding: 12px;
+    margin: 15px auto;
+    font-size: 0.9rem;
+    border-left: 6px solid rgba(255, 255, 255, 0.5); /* Slightly thinner border for small screens */
+  }
+}
+
+@media (max-width: 400px) { /* Extra small mobile */
+  .Main {
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+  }
+  #ph {
+    width: 90%; /* Max width on smallest screens */
+  }
+  #ph:hover {
+    width: 90%;
+  }
+  .post {
+    font-size: 1rem;
+  }
+  .quote-1 {
+    padding: 10px;
+    margin: 10px auto;
+    font-size: 0.85rem;
+  }
+}
+
+.post {
+  text-align: center;
+  font-size: 1.5rem; /* Adjusted for smaller screens */
+}
+
+.quote-1 {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 9px solid rgba(255, 255, 255, 0.5); /* Semi-transparent border */
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: var(--border-radius);
+  max-width: 600px;
+  transition: all 0.4s ease-in-out;
+  text-align: center;
+}
+
+.quote-1:hover {
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.488);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 1rem;
+  transform: scale(1.02); /* Slight scale on hover */
+  filter: brightness(110%);
+}
+
+/* Skills Section */
+#Skills {
+  background: var(--secondary);
+  border-radius: var(--border-radius);
+  padding: 40px 20px;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.bg-2 {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  height: 100%; /* Ensure cards are same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bg-2:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 15px #f1f1f1;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-bottom: 10px;
+  color: azure;
+}
+
+.card-text {
+  font-size: 1.1rem;
+  text-align: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--text-muted);
+}
+
+.phim-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Image container for multiple icons */
+.phim-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px; /* Adjusted height to accommodate 110px icons and their large scale(2) hover */
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Base styles for all icons within the container */
+.phim-container img {
+  position: absolute;
+  width: 110px; /* User's requested default width */
+  height: 110px; /* Set height to match width for proportional scaling */
+  object-fit: contain;
+  /* Combined and corrected transition property to apply to all relevant changes */
+  transition: transform 0.6s ease-in-out, filter 0.6s ease-in-out, width 0.6s ease-in-out, height 0.6s ease-in-out;
+}
+
+/* Specific positioning for layered icons */
+/* These ensure the icons are positioned correctly relative to the center of their container */
+.phim1 { left: 50%; transform: translateX(-100%); opacity: 1; z-index: 3; }
+.phim2 { left: 50%; transform: translateX(-50%); opacity: 1; z-index: 2; }
+.phim3 { left: 50%; transform: translateX(0%); opacity: 1; z-index: 1; }
+
+/* Coordinated hover effect when the entire card is hovered */
+/* This effect applies to all three icons when the parent .bg-2.card is hovered. */
+.bg-2.card:hover .phim1 { transform: translateX(-150%) scale(1.1); opacity: 0.8; }
+.bg-2.card:hover .phim2 { transform: translateX(-50%) scale(1.2); opacity: 1; }
+.bg-2.card:hover .phim3 { transform: translateX(50%) scale(1.1); opacity: 0.8; }
+
+
+/* Individual icon hover effect */
+/* IMPORTANT: This will override the .bg-2.card:hover effect for the specific icon being directly hovered.
+   The 'transform' property here *must* re-include the 'translateX' value from their initial positioning,
+   otherwise, the icon would jump to the center before scaling.
+*/
+.phim1:hover { transform: translateX(-100%) scale(2); filter: brightness(120%) saturate(100%); }
+.phim2:hover { transform: translateX(-50%) scale(2); filter: brightness(120%) saturate(100%); }
+.phim3:hover { transform: translateX(0%) scale(2); filter: brightness(120%) saturate(100%); }
+
+
+
+@media (max-width: 1200px) { /* Adjust for larger desktops/laptops */
+  .phim-container { height: 120px; }
+  .phim-container img { width: 90px; height: 90px; }
+  /* Adjust hover scale for individual icons on larger screens if scale(2) is too extreme */
+  .phim1:hover { transform: translateX(-100%) scale(1.8); }
+  .phim2:hover { transform: translateX(-50%) scale(1.8); }
+  .phim3:hover { transform: translateX(0%) scale(1.8); }
+}
+
+@media (max-width: 992px) { /* Tablets and smaller laptops */
+  .phim-container { height: 110px; } /* Increased height */
+  .phim-container img { width: 85px; height: 85px; } /* Increased size */
+  .phim1:hover { transform: translateX(-100%) scale(1.6); }
+  .phim2:hover { transform: translateX(-50%) scale(1.6); }
+  .phim3:hover { transform: translateX(0%) scale(1.6); }
+}
+
+@media (max-width: 768px) { /* Mobile landscape and smaller tablets */
+  .phim-container { height: 100px; } /* Increased height */
+  .phim-container img { width: 75px; height: 75px; } /* Increased size */
+  .phim1:hover { transform: translateX(-100%) scale(1.4); }
+  .phim2:hover { transform: translateX(-50%) scale(1.4); }
+  .phim3:hover { transform: translateX(0%) scale(1.4); }
+}
+
+@media (max-width: 576px) { /* Small mobile */
+  .phim-container { height: 90px; } /* Increased height */
+  .phim-container img { width: 70px; height: 70px; margin: 5px; } /* Increased size and reduced margin */
+  .phim1 { transform: translateX(-100%); } /* Ensure base positioning is maintained */
+  .phim2 { transform: translateX(-50%); }
+  .phim3 { transform: translateX(0%); }
+  /* Adjust hover scale to prevent overflow on very small screens */
+  .phim1:hover { transform: translateX(-100%) scale(1.2); }
+  .phim2:hover { transform: translateX(-50%) scale(1.2); }
+  .phim3:hover { transform: translateX(0%) scale(1.2); }
+}
+
+@media (max-width: 400px) { /* Very small mobile */
+  .phim-container { height: 80px; } /* Increased height */
+  .phim-container img { width: 60px; height: 60px; margin: 3px; } /* Increased size and further reduced margin */
+  .phim1:hover { transform: translateX(-100%) scale(1.1); }
+  .phim2:hover { transform: translateX(-50%) scale(1.1); }
+  .phim3:hover { transform: translateX(0%) scale(1.1); }
+}
+
+/* About Section */
+#abt-sec-1 {
+  padding-top: 5rem; /* Adjust padding for fixed header */
+  padding-bottom: 3rem;
+}
+
+#abt-sec {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.animate {
+  width: 100%;
+  max-width: 200px; /* Limit width for cleaner look */
+  margin: 0 auto 2rem; /* Center and add bottom margin */
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+#abt {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin: 15px auto; /* Center text */
+  margin-top: 1em;
+  font-size: 1.2em;
+  max-width: 800px; /* Limit width for readability */
+}
+
+.typing-cursor {
+  border-right: 2px solid var(--text-light); /* Changed color for visibility */
+  animation: blink 0.7s steps(1) infinite;
+  white-space: pre-wrap;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--text-light);
+  }
+}
+
+/* Toggle button styles for About section */
+.toggle-btn-6,
+.toggle-btn-1,
+.toggle-btn-3,
+.toggle-btn-4,
+.toggle-btn-5 {
+  cursor: pointer;
+  padding: 1rem;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  text-align: center;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  user-select: none;
+  max-width: 30em;
+  margin: 2rem auto 1rem;
+}
+
+.toggle-btn-6:hover,
+.toggle-btn-1:hover,
+.toggle-btn-3:hover,
+.toggle-btn-4:hover,
+.toggle-btn-5:hover {
+  background: linear-gradient(135deg, #b2ebf2, #dcedc8);
+}
+
+/* Content box for About section */
+#content-6,
+#content-1,
+#content-3,
+#content-4,
+#content-5 {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+  border-radius: 1rem;
+  margin: 0 auto;
+  max-width: 30em;
+  padding: 0 1.5rem;
+  background: rgba(255 255 255 / 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  font-family: cursive;
+  color: #000000;
+}
+
+#content-6.show,
+#content-1.show,
+#content-3.show,
+#content-4.show,
+#content-5.show {
+  max-height: fit-content; /* Allow content to expand */
+  opacity: 1;
+  padding: 1.5rem;
+}
+
+/* Contact Me Section */
+#contact {
+  background-color: #0e0e0e;
+  color: #f1f1f1;
+  padding-top: 5rem; /* Adjust padding for fixed header */
+  padding-bottom: 3rem;
+}
+
+#contact h2 {
+  font-size: 2.5rem;
+}
+
+#contact .form-floating label {
+  color: rgba(255, 255, 255, 0.7); /* Slightly brighter for visibility */
+}
+
+#contact input,
+#contact textarea {
+  background-color: #1a1a1a !important; /* Ensure dark background */
+  color: #f1f1f1 !important; /* Ensure light text */
+  border-color: rgba(255, 255, 255, 0.2) !important; /* Subtle border */
+}
+
+.custom-file-upload {
+  border: 1px solid #444;
+  transition: all 0.3s, border-color 0.3s;
+}
+
+.custom-file-upload:hover {
+  background-color: #1a1a1a;
+  border-color: #666;
+}
+
+.fas {
+  width: auto; /* Remove fixed width, let content dictate */
+}
+
+/* Footer */
+footer {
+  background-color: #111;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+footer a {
+  color: #fff;
+  font-size: 1.5rem; /* Slightly larger icons */
+  margin: 0 0.5rem; /* Space between icons */
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #0dcaf0; /* Bootstrap info color for hover */
+}
+
+/* Glassmorphism effect (general) */
+.glass-hover {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+  border-radius: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  #ph {
+    width: 20em;
+    height: 20em;
+  }
+  #ph:hover {
+    width: 22em;
+    height: 22em;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-2 {
+    padding-left: 0;
+  }
+
+  #ph {
+    width: 18em;
+    height: 18em;
+    margin-bottom: 2rem; /* Add some space below image */
+  }
+  #ph:hover {
+    width: 20em;
+    height: 20em;
+  }
+
+  .post {
+    font-size: 1.3rem;
+  }
+
+  .quote-1 {
+    font-size: 0.95rem;
+    padding: 15px;
+  }
+
+  .navbar-nav {
+    background: rgba(0, 0, 0, 0.8); /* Darker background for collapsed menu */
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-top: 1rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    text-align: center;
+  }
+
+  .phim1,
+  .phim2,
+  .phim3 {
+    width: 60px; /* Smaller icons on medium screens */
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+
+  .toggle-btn-6,
+  .toggle-btn-1,
+  .toggle-btn-3,
+  .toggle-btn-4,
+  .toggle-btn-5 {
+    font-size: 1.1rem;
+    padding: 0.8rem;
+    max-width: 25em;
+  }
+
+  #content-6,
+  #content-1,
+  #content-3,
+  #content-4,
+  #content-5 {
+    max-width: 25em;
+    padding: 1rem;
+  }
+
+  #abt-sec {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .Main {
+    padding-top: 8rem; /* Further reduce padding for smaller screens */
+  }
+
+  #ph {
+    width: 15em;
+    height: 15em;
+  }
+  #ph:hover {
+    width: 16em;
+    height: 16em;
+  }
+
+  .post {
+    font-size: 1.2rem;
+  }
+
+  .quote-1 {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+
+  .phim1,
+  .phim2,
+  .phim3 {
+    width: 50px; /* Even smaller icons */
+    margin: 5px; /* Reduce margin */
+  }
+
+  .toggle-btn-6,
+  .toggle-btn-1,
+  .toggle-btn-3,
+  .toggle-btn-4,
+  .toggle-btn-5 {
+    font-size: 1rem;
+    padding: 0.7rem;
+    max-width: 90%; /* Take more width */
+  }
+
+  #content-6,
+  #content-1,
+  #content-3,
+  #content-4,
+  #content-5 {
+    max-width: 90%;
+    padding: 0.8rem;
+  }
+
+  #contact h2 {
+    font-size: 2rem;
+  }
+  #contact p {
+    font-size: 0.9rem;
+  }
+
+  #contact .form-floating label {
+    font-size: 0.9rem;
+  }
+
+  .custom-file-upload {
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .custom-navbar {
+    padding-bottom: 1em; /* Adjust for smaller screens */
+  }
+
+  #name {
+    font-size: 1.5rem;
+  }
+
+  #gd_logo {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+  }
+
+  .Main {
+    padding-top: 6rem; /* Minimal padding for small screens */
+  }
+
+  #ph {
+    width: 12em;
+    height: 12em;
+    margin-bottom: 1.5rem;
+  }
+  #ph:hover {
+    width: 13em;
+    height: 13em;
+  }
+
+  .post {
+    font-size: 1rem;
+  }
+
+  .quote-1 {
+    font-size: 0.75rem;
+    padding: 8px;
+    margin: 20px auto;
+  }
+
+  #Skills {
+    padding: 20px 10px;
+  }
+
+  .bg-2 {
+    padding: 15px;
+  }
+
+  .phim1,
+  .phim2,
+  .phim3 {
+    width: 40px; /* Smallest icons */
+    margin: 3px;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+  .card-text {
+    font-size: 0.8rem;
+  }
+
+  #abt-sec {
+    font-size: 1.8rem;
+  }
+
+  #abt {
+    font-size: 1rem;
+    margin: 10px auto;
+  }
+
+  .toggle-btn-6,
+  .toggle-btn-1,
+  .toggle-btn-3,
+  .toggle-btn-4,
+  .toggle-btn-5 {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  #content-6,
+  #content-1,
+  #content-3,
+  #content-4,
+  #content-5 {
+    padding: 0.6rem;
+  }
+
+  #contact h2 {
+    font-size: 1.8rem;
+  }
+  #contact p {
+    font-size: 0.8rem;
+  }
+
+  #contact .form-floating label {
+    font-size: 0.8rem;
+  }
+
+  .custom-file-upload {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem !important;
+  }
+
+  footer a {
+    font-size: 1.2rem;
+    margin: 0 0.3rem;
+  }
+
+  footer div {
+    font-size: 12px;
+  }
+}
